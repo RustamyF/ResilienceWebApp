@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+
+    <style>
+      .alert {
+        background: green;
+        padding: 1rem;
+        border-radius: 5px;
+        color: white;
+        margin: 1rem;
+      }
+    </style>
+  <body>
+    <div class="container">
+      <h3>Ground Motion Data</h3>
+    </div>
+
+    <!-- Form -->
+    <div class="container">
+      <form action="/send" method="POST">
+        <label for="Number One">Latitude</label>
+        <input
+          type="text"
+          placeholder="First Number"
+          class="u-full-width"
+          name="num1"
+        />
+
+        <label for="Number Two">Longitude</label>
+        <input
+          type="text"
+          placeholder="Second Number"
+          class="u-full-width"
+          name="num2"
+        />
+
+        <label for="Operation">Choose a Site Class</label>
+        <select class="u-full-width" name="operation">
+          <option value="add">Site Class A (2000 m/s)</option>
+          <option value="subtract">Site Class B (2000 m/s)</option>
+          <option value="multiply">Site Class D (2000 m/s)</option>
+          <option value="divide">Divide</option>
+        </select>
+
+        <label for="Operation">Select Spectral Period</label>
+        <select class="u-full-width" name="operation">
+          <option value="add">Peak Ground Acceleration</option>
+          <option value="subtract">0.2 Second Spectral Acceleration</option>
+          <option value="multiply">0.5 Second Spectral Acceleration</option>
+          <option value="multiply">1 Second Spectral Acceleration</option>
+          <option value="divide">Divide</option>
+        </select>
+
+        <label for="Operation">Select return Period</label>
+        <select class="u-full-width" name="operation">
+          <option value="add">Peak Ground Acceleration</option>
+          <option value="subtract">2% in 50 years</option>
+          <option value="multiply">5% in 50 years</option>
+          <option value="multiply">10% in 50 years</option>
+          <option value="divide">Divide</option>
+        </select>
+
+        <input type="submit" value="Calculate" id="calc_btn" />
+        <br />
+        <div class="alert">
+          {{ sum }}
+        </div>
+      </form>
+    </div>
+  </body>
+
+
+
+
+
+
+{% endblock content %}
